@@ -8,17 +8,16 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ServiceHello {
-    @Qualifier("method_call_count")
-    @Autowired
-    private Counter counter;
-    @Qualifier("method_execution_timer")
-    @Autowired
-    private Timer timer;
-    // Создание счетчика для размера входных данных
+    private final Counter counter;
+    private final Timer timer;
     private Counter inputSizeMetric;
 
-    // Создание счетчика для размера выходных данных
     Counter outputSizeMetric;
+
+    public ServiceHello(@Qualifier("method_call_count") Counter counter, @Qualifier("method_execution_timer") Timer timer) {
+        this.counter = counter;
+        this.timer = timer;
+    }
 
 
     public String hel(String s) {
