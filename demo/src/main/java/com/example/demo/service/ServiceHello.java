@@ -12,8 +12,6 @@ public class ServiceHello {
     private final Timer timer;
     private Counter inputSizeMetric;
 
-    Counter outputSizeMetric;
-
     public ServiceHello(@Qualifier("method_call_count") Counter counter, @Qualifier("method_execution_timer") Timer timer) {
         this.counter = counter;
         this.timer = timer;
